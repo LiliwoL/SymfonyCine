@@ -25,6 +25,17 @@ DATABASE_URL="sqlite:///%kernel.project_dir%/DATAS/SymfonyCine.db"
 ###< doctrine/doctrine-bundle ###
 ```
 
+## Import de la base de données en Entity
+
+```
+php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity
+```
+
+
+***
+
+
+
 ## Création de l'entité Movie
 
 Pour créer une entité, on utilise la commande *make:entity*:
