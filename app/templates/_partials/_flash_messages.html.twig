@@ -1,0 +1,19 @@
+{% if app.request.hasPreviousSession %}
+    <div class="messages">
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-dismissible alert-{{ type }} fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="{{ 'action.close'|trans }}">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <h4 class="alert-heading">{{ type }}!</h4>
+                    <p class="mb-0">
+                        {{ message|trans }}
+                    </p>
+
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endif %}

@@ -1,0 +1,11 @@
+.idea
+
+.env
+
+db_data/
+dbdata/
+logs/
+
+app/vendor/
+app/var/
+app/.composer/

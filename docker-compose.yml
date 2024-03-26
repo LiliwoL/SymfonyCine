@@ -1,0 +1,83 @@
+version: '3'
+
+services:
+  # ========================================
+  # Apache PHP 8
+    # ========================================
+  symfony_web:
+    build:
+      context: .
+
+      # PHP 8.1
+      #dockerfile: DockerConfig/php-8.1/Dockerfile
+
+      # PHP 8.2
+      #dockerfile: DockerConfig/php-8.2/Dockerfile
+
+      # PHP 8.3
+      dockerfile: DockerConfig/php8.3/Dockerfile
+
+    container_name: symfony_web
+
+    ports:
+      - '807:80'
+    volumes:
+      - './app:/var/www/html'
+      - './app/var:/var/log'
+      - './app/.composer/cache:/var/www/.composer/cache'
+      - './DockerConfig/vhosts:/etc/apache2/sites-enabled'
+    depends_on:
+      - symfony_db
+    links:
+      - symfony_db
+    networks:
+      - symfony_cine
+
+
+  # MariaDB
+  symfony_db:
+    image: 'mariadb:10.7'
+    container_name: symfony_db
+    ports:
+      - '3306:3306'
+    environment:
+      - MARIADB_ROOT_PASSWORD="${DB_ROOT_PASSWORD}"
+      - MARIADB_DATABASE="${DB_NAME}"
+      - MARIADB_USER="${DB_USER}"
+      - MARIADB_PASSWORD="${DB_PASSWORD}"
+    volumes:
+      - './db_data:/var/lib/mysql'
+    networks:
+      - symfony_cine
+
+
+  # PHPMyAdmin
+  symfony_phpmyadmin:
+    image: phpmyadmin
+    container_name: symfony_phpmyadmin
+    restart: always
+    environment:
+      - PMA_HOST="${DB_HOST}"
+      - PMA_PORT="${DB_HOST_PORT}"
+      - PMA_USER="${DB_USER}"
+      - PMA_PASSWORD="${DB_PASSWORD}"
+    ports:
+      - 8081:80
+    networks:
+      - symfony_cine
+
+
+  # MailHog
+  symfony_mailhog:
+    image: mailhog/mailhog
+    restart: always
+    container_name: symfony_mailhog
+    ports:
+      - '1025:1025'
+      - '8025:8025'
+    networks:
+      - symfony_cine
+
+networks:
+  symfony_cine:
+    driver: bridge

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche du film {{ movie.title }}{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+
+    <h1>Titre: {{ movie.title }}</h1>
+    <img src="{{ urlImageMoviePrefix }}/{{ movie.poster_path }}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{ movie.title }}</h5>
+        <p class="card-text">{{ movie.overview }}</p>
+    </div>
+
+    <h2>Laisser une note</h2>
+    {{ form_start(ratingForm) }}
+        {{ form_row(ratingForm.nickname) }}
+        {{ form_row(ratingForm.rate) }}
+    {{ form_end(ratingForm) }}
+
+    <h2>Les notes</h2>
+    <ul>
+        {% for rating in ratingList %}
+            <li>{{ rating.nickname }} a donné la note de {{ rating.rate }}</li>
+        {% endfor %}
+    </ul>
+
+
+    <!-- Affichage du formulaire d'enregistrement du film -->
+    {{ form(movieForm) }}
+
+    {# {{ dump(movie) }} #}
+</div>
+{% endblock %}

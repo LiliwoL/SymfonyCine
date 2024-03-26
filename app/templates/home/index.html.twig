@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SymfonyCine{% endblock %}
+
+{% block body %}
+
+    <h1>Liste depuis OMDB:</h1>
+    {%  for movie in omdb_list %}
+        {{  dump(movie) }}
+    {% endfor %}
+
+    <h1>Liste depuis TMDB:</h1>
+    {%  for movie in tmdb_list %}
+        {{  dump(movie) }}
+    {% endfor %}
+
+{% endblock %}

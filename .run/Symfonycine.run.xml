@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Symfonycine" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker Local">
+    <deployment type="docker-compose.yml">
+      <settings>
+        <option name="envFilePath" value="H:\dev\SymfonyCine\.env.docker" />
+        <option name="removeImagesOnComposeDown" value="ALL" />
+        <option name="commandLineOptions" value="--build" />
+        <option name="sourceFilePath" value="docker-compose.yml" />
+        <option name="upForceRecreate" value="true" />
+        <option name="upRemoveOrphans" value="true" />
+      </settings>
+    </deployment>
+    <method v="2" />
+  </configuration>
+</component>
