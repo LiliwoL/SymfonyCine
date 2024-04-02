@@ -26,29 +26,29 @@ services:
       - './app/var:/var/log'
       - './app/.composer/cache:/var/www/.composer/cache'
       - './DockerConfig/vhosts:/etc/apache2/sites-enabled'
-    depends_on:
-      - symfony_db
-    links:
-      - symfony_db
+#    depends_on:
+#      - symfony_db
+#    links:
+#      - symfony_db
     networks:
       - symfony_cine
 
 
   # MariaDB
-  symfony_db:
-    image: 'mariadb:10.7'
-    container_name: symfony_db
-    ports:
-      - '3306:3306'
-    environment:
-      - MARIADB_ROOT_PASSWORD="${DB_ROOT_PASSWORD}"
-      - MARIADB_DATABASE="${DB_NAME}"
-      - MARIADB_USER="${DB_USER}"
-      - MARIADB_PASSWORD="${DB_PASSWORD}"
-    volumes:
-      - './db_data:/var/lib/mysql'
-    networks:
-      - symfony_cine
+#  symfony_db:
+#    image: 'mariadb:10.7'
+#    container_name: symfony_db
+#    ports:
+#      - '3306:3306'
+#    environment:
+#      - MARIADB_ROOT_PASSWORD="${DB_ROOT_PASSWORD}"
+#      - MARIADB_DATABASE="${DB_NAME}"
+#      - MARIADB_USER="${DB_USER}"
+#      - MARIADB_PASSWORD="${DB_PASSWORD}"
+#    volumes:
+#      - './db_data:/var/lib/mysql'
+#    networks:
+#      - symfony_cine
 
 
   # PHPMyAdmin

@@ -4,14 +4,8 @@
 
 {% block body %}
 
-    <h1>Liste depuis OMDB:</h1>
-    {%  for movie in omdb_list %}
-        {{  dump(movie) }}
-    {% endfor %}
-
-    <h1>Liste depuis TMDB:</h1>
-    {%  for movie in tmdb_list %}
-        {{  dump(movie) }}
-    {% endfor %}
+    <h1>SymfonyCine</h1>
+    {# Affichage du message de bienvenue envoyé par le controleur #}
+    {{ welcomeMessage }}
 
 {% endblock %}
