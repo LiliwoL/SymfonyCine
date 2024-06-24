@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{# Surcharge du bloc title #}
+{% block title %}Liste des films{% endblock %}
+
+
+{% block stylesheets %}
+    {# Je veux une feuille de style spécifique pour cette vue #}
+    <!-- Feuille spécifique -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+
+    {# Affichage d'une valeur avec dump#}
+    {#{ dump(movies) }#}
+
+    <div class="row align-items-center">
+        <div class="col">
+            Formation Symfony
+        </div>
+    </div>
+
+{% endblock %}

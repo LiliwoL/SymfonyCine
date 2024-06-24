@@ -1,5 +1,12 @@
 # Symfony Cine
 
+[toc]
+
+v0.1
+
+http://localhost:807
+---
+
 ## Objectifs
 
 On souhaite développer une application similaire à AlloCiné.
@@ -23,20 +30,37 @@ De plus on va découvrir le développement en utilisant le modèle MVC.
 
 ---
 
-# Etapes
+# Mission 0 - Installation de l'environnement de développement
 
 ## Installation et configuration de la WSL
 
+PHP, composer, et symfony cli doivent être installés.
+  
+```bash
+php -v
+composer -v
+symfony -v
+```
+> Attention à la version de PHP!
 
+---
 
-## Installation de Symfony et de Composer
+# Mission 1: Premier pas avec Symfony
 
-## Premier pas avec Symfony
+Pour la création du dossier du projet, on va utiliser la commande **symfony**.
+
+```bash
+symfony check:requirements
+symfony new SymfonyCine
+```
+
 
 - Découverte des routes et contrôleurs
 - Découverte du langage de template twig
 
-### Mission 1 - Découverte des routes et contrôleurs
+---
+
+## Mission 2 - Découverte des routes et contrôleurs
 
 - Modifier le contrôleur **HomeController** pour créer un message de bienvenue dans la méthode **index**.
 - Modifier le fichier twig de la vue pour afficher le message de bienvenue.
@@ -56,7 +80,7 @@ return $this->render('home/index.html.twig', [
 
 > Travail à faire:
 > - Créer un nouveau contrôleur **HomeController**
-> - Créer une nouvelle route **/** pour afficher un message de bienvenue
+> - Créer une nouvelle route **/home** pour afficher un message de bienvenue
 > - Créer un fichier twig pour afficher le message de bienvenue
 > - Passer la variable **message** au fichier twig
 > - Afficher le message de bienvenue dans le fichier twig

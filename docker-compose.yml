@@ -1,4 +1,9 @@
-version: '3'
+version: '3.8'
+
+#
+# App:
+#   http://localhost:807
+#
 
 services:
   # ========================================
@@ -7,12 +12,6 @@ services:
   symfony_web:
     build:
       context: .
-
-      # PHP 8.1
-      #dockerfile: DockerConfig/php-8.1/Dockerfile
-
-      # PHP 8.2
-      #dockerfile: DockerConfig/php-8.2/Dockerfile
 
       # PHP 8.3
       dockerfile: DockerConfig/php8.3/Dockerfile

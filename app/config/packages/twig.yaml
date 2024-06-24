@@ -1,6 +1,14 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
 
+
+    # Ajout de paramètres à Twig
+    globals:
+        route_paths: '@App\Helper\Routes'
+
+        # Locale
+        default_locale: '%app.default_locale%'
+        supported_locales: '%app.supported_locales%'
 when@test:
     twig:
         strict_variables: true
