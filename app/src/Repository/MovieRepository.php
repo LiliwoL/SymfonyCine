@@ -21,6 +21,21 @@ class MovieRepository extends ServiceEntityRepository
         parent::__construct($registry, Movie::class);
     }
 
+    /**
+     * Renvoie une sélection de 5 films
+     *
+     * @return array<Movie>
+     */
+    public function findSelection(): array
+    {
+        return $this->createQueryBuilder('m')
+            ->orderBy('m.title', 'ASC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     //    /**
     //     * @return Movie[] Returns an array of Movie objects
     //     */

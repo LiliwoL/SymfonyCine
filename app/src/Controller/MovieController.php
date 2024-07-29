@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Movie;
 use App\Form\MovieType;
+use App\Repository\MovieRepository;
 use App\Repository\RatingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
@@ -154,5 +155,40 @@ class MovieController extends AbstractController
             // Liste des notes pour CE film
             'ratingList' => $ratingList
         ]);
+    }
+
+
+    // ============================================================
+    /**
+     * Affiche une sélection de films sous forme de bandeau défilant
+     * La sélection peut provenir de la base de données (local = true) ou d'une API (par défaut)
+     *
+     * @param bool $local
+     * @return Response
+     */
+    public function getMovieSelection(
+        TMDBApi $TMDBApiService,                          // Injection du service TMDBApi
+        MovieRepository $movieRepository,                 // Injection du repository Movie
+        bool    $local = false                            // (local = true pour une sélection locale)
+    ): Response
+    {
+        $urlImageMoviePrefix = $_ENV['TMDB_URL_IMAGE_PREFIX'];
+
+        if ($local) {
+            // Récupération de la liste des films en base de données
+            $T_movies = $movieRepository->findSelection();
+        } else {
+            // Appel du service TMDB pour récupérer une liste de films
+            $T_movies = $TMDBApiService->discover();
+        }
+
+        // Rendu du template
+        return $this->render(
+            'movie/_selection.html.twig',
+            [
+                'urlImageMoviePrefix' => $urlImageMoviePrefix,
+                'local' => $local,  // Variable pour afficher le message 'Sélection locale' ou 'Sélection API
+                'movies' => $T_movies
+            ]);
     }
 }

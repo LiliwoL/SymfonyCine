@@ -1,0 +1,56 @@
+<section class="films-et-series">
+    <section class="section tendances">
+        <div>
+
+            {# Affichage de la source de la sélection #}
+            {% if (local) %}
+                <h3 style="color: #fff">Notre sélection</h3>
+            {% else %}
+                <h3 style="color: #fff">La sélection de notre partenaire</h3>
+            {% endif %}
+
+            <div class="no">
+                <div class="wrapper">
+
+                    {# Affichage des 5 premiers films #}
+                    <section id="section1{% if (local) %}-local{% endif %}">
+                        <a href="#section3{% if (local) %}-local{% endif %}" class="arrow__btn">‹</a>
+
+                        {% for movie in movies|slice(0,5) %}
+                            {{ include(
+                                'movie/_selection_section.html.twig',
+                                { 'movie': movie }
+                            ) }}
+                        {% endfor %}
+
+                        <a href="#section2{% if (local) %}-local{% endif %}" class="arrow__btn">›</a>
+                    </section>
+
+                    {# Affichage des 5 films suivants #}
+                    <section id="section2{% if (local) %}-local{% endif %}">
+                        <a href="#section1{% if (local) %}-local{% endif %}" class="arrow__btn">‹</a>
+                        {% for movie in movies|slice(5,5) %}
+                            {{ include(
+                                'movie/_selection_section.html.twig',
+                                { 'movie': movie }
+                            ) }}
+                        {% endfor %}
+                        <a href="#section3{% if (local) %}-local{% endif %}" class="arrow__btn">›</a>
+                    </section>
+
+                    {# Affichage des 5 derniers films #}
+                    <section id="section3{% if (local) %}-local{% endif %}">
+                        <a href="#section2{% if (local) %}-local{% endif %}" class="arrow__btn">‹</a>
+                        {% for movie in movies|slice(10,5) %}
+                            {{ include(
+                                'movie/_selection_section.html.twig',
+                                { 'movie': movie }
+                            ) }}
+                        {% endfor %}
+                        <a href="#section1{% if (local) %}-local{% endif %}" class="arrow__btn">›</a>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
