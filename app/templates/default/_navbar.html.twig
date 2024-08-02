@@ -1,0 +1,68 @@
+{# Nav bar de recherche #}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-4 fixed-top">
+    <div class="gauche">
+        <a class="navbar-brand" href="#">
+            <img src="{{ asset('images/logo.png') }}" width="60">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="onglets collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ path('home_real') }}">
+                            {% trans %}Home{% endtrans %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_login') }}">{% trans %}Login{% endtrans %}</a>
+                    </li>
+
+                    <!-- Movies -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% trans %}Movies{% endtrans %}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {#                        <li><a class="dropdown-item" href="{{ path('movie_add') }}" title="ajouter un film">{% trans %}Add{% endtrans %}</a></li>#}
+                            {#                        <li><a class="dropdown-item" href="{{ path('movie_list')}}" title="Liste des films">{% trans %}List{% endtrans %}</a></li>#}
+                        </ul>
+                    </li>
+
+                    <!-- Artistes -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% trans %}Artists{% endtrans %}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {#                        <li><a class="dropdown-item" href="{{ path('artist_new') }}" title="ajouter un artiste">{% trans %}Add{% endtrans %}</a></li>#}
+                            {#                        <li><a class="dropdown-item" href="{{ path('artist_index')}}" title="Liste des artistes">{% trans %}List{% endtrans %}</a></li>#}
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('sitemap') }}">{% trans %}Sitemap{% endtrans %}</a>
+                    </li>
+
+                    {# Inclusion du choix de locale #}
+                    {% include 'default/_locale_switcher.html.twig' %}
+
+                </ul>
+                {#            <form class="d-flex" action="{{ path('movie_search') }}">#}
+                {#                <input class="form-control me-2" value="{{ query|default('') }}" type="search" placeholder="{{ 'Query'|trans }}" aria-label="Search" name="q">#}
+                {#                <button class="btn btn-outline-success" type="submit">{{ 'Search'|trans }}</button>#}
+                {#            </form>#}
+            </div>
+
+    </div>
+    <div class="droite">
+        <p><i class="fas fa-search"></i></p>
+        <p><i class="fas fa-bell"></i></p>
+        <p>Mon compte</p>
+    </div>
+
+</nav>
+<!-- Fin de la barre de navigation -->
